@@ -1,6 +1,8 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 
+
+// Wallet Table
 @Entity({ name: 'wallet' })
 export class Wallet {
   @PrimaryGeneratedColumn({ type: 'bigint' })

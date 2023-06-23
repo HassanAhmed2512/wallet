@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 
+//  The Histry Table 
 @Entity({ name: 'history' })
 export class History {
   @PrimaryGeneratedColumn({ type: 'bigint' })

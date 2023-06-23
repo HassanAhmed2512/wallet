@@ -2,6 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Wallet } from './wallet';
 import { History } from './History';
 
+// Users Table
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn({type:'bigint'})
@@ -11,7 +12,7 @@ export class User {
   email : string;
 
   @Column()
-  Password:string;
+  password:string;
 
   @Column()
   firstName: string;
