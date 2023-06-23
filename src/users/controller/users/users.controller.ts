@@ -1,4 +1,11 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe,Get } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  UsePipes,
+  ValidationPipe,
+  Get,
+} from '@nestjs/common';
 import { CreateUserDto } from 'src/users/dtos/createUser.dto';
 import { UsersService } from 'src/users/service/users/users.service';
 
@@ -7,7 +14,7 @@ import { UsersService } from 'src/users/service/users/users.service';
 export class UsersController {
   constructor(private userService: UsersService) {}
 
-// Route to Get all Users
+  // Route to Get all Users
   @Get()
   getUsers() {
     return this.userService.findUsers();
@@ -16,11 +23,8 @@ export class UsersController {
   // Route to Create User
   @UsePipes(ValidationPipe)
   @Post('/register')
-  createUser(@Body() createUserDto: CreateUserDto) {
+  async createUser(@Body() createUserDto: CreateUserDto) {
     const { confirmpassword, ...userDetails } = createUserDto;
     return this.userService.createUser(userDetails);
   }
-
-
-
 }

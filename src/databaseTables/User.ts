@@ -8,7 +8,7 @@ export class User {
   @PrimaryGeneratedColumn({type:'bigint'})
   id: number;
 
-  @Column()
+  @Column({unique: true})
   email : string;
 
   @Column()
@@ -20,10 +20,10 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column({type:'bigint'})
+  @Column({type:'bigint' , unique : true})
   phoneNumber: number;
 
-  @Column({type:'bigint'})
+  @Column({type:'bigint' , unique: true})
   nationalID: number;
 
   @Column()
