@@ -1,73 +1,56 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Backend (NestJS)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Overview
+I have developed a backend project that allows the creation of users based on the following information: email, password, first name, last name, phone number, and national ID. It is a policy in our system that email, phone number, and national ID must be unique. When a user is created, an immediate wallet is assigned to them with zero cash. Users have the option to acquire multiple wallets and can transfer money between users using their respective wallet IDs. Additionally, every user has access to a detailed transaction history.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Setup Instructions
+To set up and run this project on your machine, please follow these steps:
 
-## Description
+1. Open the `backend` folder in your preferred editor.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+2. Open the terminal and execute the following commands:
+   - Run `npm i` to install the required dependencies.
+   - Run `yarn i` or `yarn add` to add any additional dependencies.
 
-## Installation
+3. Ensure that you have a functioning MySQL database installed on your machine.
 
-```bash
-$ npm install
-```
+4. Navigate to the `src` folder and locate the `app.module.ts` file. Update the database configuration within this file to match your local database settings.
 
-## Running the app
+5. Finally, run the command `nest start` to start the application.
 
-```bash
-# development
-$ npm run start
+That's it! You can now test the APIs in each controller using the provided schema defined in the Dto file.
 
-# watch mode
-$ npm run start:dev
+## File Structure
 
-# production mode
-$ npm run start:prod
-```
+### databaseTables
+In this directory, all the necessary database tables are stored. We have three tables: Users, Wallet, and History. The relationship between Users and Wallet/History is one-to-many, meaning that a user can have multiple wallets and a history of all their transactions.
 
-## Test
+### Controllers, Services, DTOs, and Modules
+Each component (history, users, wallet) has its own controller, service, module, and DTOs.
 
-```bash
-# unit tests
-$ npm run test
+- Controllers: These handle the routes for each API.
+- Services: They contain the logic for the controller functions.
+- DTOs (Data Transfer Objects): These define the expected schema for API requests, ensuring data correctness and validation at the controller layer.
+- Modules: These map the controllers and services to the main module of the project.
 
-# e2e tests
-$ npm run test:e2e
+### History
+This section includes a single API endpoint that provides the transaction history of a specific user (GET method).
 
-# test coverage
-$ npm run test:cov
-```
+### Users
+This section consists of five API endpoints:
 
-## Support
+- (POST) Register: Allows the creation of a new user using a registration form with data validation.
+- (POST) Login: Enables user authentication using JWT strategy.
+- (POST) Logout: Facilitates user logout based on JWT strategy.
+- (GET) List all users: Retrieves a list of all users in the project.
+- (GET) User information: Retrieves user data, all associated wallets, and transaction history based on the JWT token.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Wallet
+This section contains three API endpoints:
 
-## Stay in touch
+- (POST) Create Wallet: Allows the creation of an additional wallet for a user.
+- (PATCH) Money Transfer: Enables money transfers between users based on sender and receiver wallet IDs.
+- (GET) List User Wallets: Retrieves a list of all wallets for a specific user.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+### Utils
+This directory stores the actual schemas used as parameters in the service layers.
