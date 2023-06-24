@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "fb3dd21d-493c-4823-98a3-d235a26dd035",
+		"name": "APIS - Test Cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"another4@example.com\",\r\n  \"password\": \"SecurePass7899\",\r\n  \"confirmpassword\": \"SecurePass7899\",\r\n  \"firstName\": \"Jane\",\r\n  \"lastName\": \"Smith\",\r\n  \"phoneNumber\": \"99762529210\",\r\n  \"nationalID\": \"98265333909876\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/register",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cash\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/wallet/create/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"wallet",
+						"create",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Transaction",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"senderWalletId\": 2,\r\n  \"receiverWalletId\": 1,\r\n  \"amount\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/wallet/transaction/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"wallet",
+						"transaction",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List History Of User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/history/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"history",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Wallets Of User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/wallet/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"wallet",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"another4@example.com\",\r\n    \"password\": \"SecurePass7899\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/users/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/users/logout",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
