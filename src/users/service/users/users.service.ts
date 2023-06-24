@@ -24,7 +24,10 @@ export class UsersService {
     // take the data to check
     const { email, phoneNumber, nationalID } = userDetails;
     // check to make sure they are not used befor
+    console.log(email)
     const userEmail = await this.userRepository.findOneBy({ email });
+    console.log(userEmail)
+
     const userPhone = await this.userRepository.findOneBy({ phoneNumber });
     const userId = await this.userRepository.findOneBy({ nationalID });
     // if used go out
@@ -53,4 +56,16 @@ export class UsersService {
   updateUser(id: number, updateUserDetails: UpdateUserParam) {
     return this.userRepository.update({ id }, { ...updateUserDetails });
   }
+
+  // find user by Email
+  async findOneByEmail(Param): Promise<User> {
+    const {email} =Param
+    return  await this.userRepository.findOneBy({ email });
+}
+
+ // find user by id
+ async findOneById(Param): Promise<User> {
+  const {id} =Param
+  return  await this.userRepository.findOneBy({ id });
+}
 }
