@@ -20,11 +20,11 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column({type:'bigint' , unique : true})
-  phoneNumber: number;
+  @Column({unique : true})
+  phoneNumber: string;
 
-  @Column({type:'bigint' , unique: true})
-  nationalID: number;
+  @Column({unique: true})
+  nationalID: string;
 
   @Column()
   createdDate: Date;

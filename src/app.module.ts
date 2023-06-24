@@ -17,7 +17,7 @@ import { HistoryModule } from './history/history.module';
       port: 3306,
       username: 'root',
       password: '',
-      database: 'instapay',
+      database: 'instapay', // DataBase Name
       entities: [User, Wallet, History], // 3 tables
       synchronize: true,
     }),

@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, Matches, MinLength, IsInt, IsPositive, Min, Max,Equals } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, Matches, MinLength,Length } from 'class-validator';
 
     // The Forman Data That will do the Valdiation Based on 
 
@@ -28,17 +28,11 @@ export class CreateUserDto {
   @IsNotEmpty({ message: 'lastName is required' })
   lastName: string;
 
-  @IsInt({ message: 'phoneNumber must be an integer' })
   @IsNotEmpty({ message: 'phoneNumber is required' })
-  @IsPositive({ message: 'phoneNumber must be a positive integer' })
-  @Min(1000000000, { message: 'phoneNumber must 10 digits long' })
-  @Max(9999999999, { message: 'phoneNumber must 10 digits long' })
-  phoneNumber: number;
-
-  @IsInt({ message: 'nationalID must be an integer' })
+  @Length(11, 11, { message: 'phoneNumber must be 11 digits long' })
+  phoneNumber: string;
+  
   @IsNotEmpty({ message: 'nationalID is required' })
-  @IsPositive({ message: 'nationalID must be a positive integer' })
-  @Min(10000000000000, { message: 'nationalID must be at least 14 digits long' })
-  @Max(99999999999999, { message: 'nationalID must be at most 14 digits long' })
-  nationalID: number;
+  @Length(14, 14, { message: 'nationalID must be 14 digits long' })
+  nationalID: string;
 }

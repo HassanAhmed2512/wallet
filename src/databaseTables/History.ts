@@ -8,13 +8,16 @@ export class History {
   id: number;
 
   @Column({ type: 'bigint' })
-  idReceive: number;
+  receiverId: number;
 
   @Column({ type: 'bigint' })
   cash: number;
 
   @Column()
   createdDate: Date;
+
+  @Column()
+  transfertype : string;
 
   @ManyToOne(() => User, (user) => user.history)
   user: User;

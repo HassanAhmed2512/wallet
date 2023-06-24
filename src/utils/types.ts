@@ -5,8 +5,8 @@ export class CreateUserParam{
     password:string;
     firstName: string;
     lastName: string;
-    phoneNumber: number;
-    nationalID: number;
+    phoneNumber: string;
+    nationalID: string;
 }
 
 // The Actual Data Type For User (inCase Update) That will Store in Database
@@ -16,8 +16,8 @@ export class UpdateUserParam{
     Password?: string;
     firstName?: string;
     lastName?: string;
-    phoneNumber?: number;
-    nationalID?: number;
+    phoneNumber?: string;
+    nationalID?: string;
 }
 
 // The Actual Data Type For walet That will Store in Database
@@ -33,6 +33,6 @@ export class UpdateWalletParam {
 // The Actual Data Type For History That will Store in Database
 
 export class CreateHistoryParam{
-    idReceive: number;
+    receiverId: number;
     cash: number;
 }
